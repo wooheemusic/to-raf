@@ -2,33 +2,40 @@
 The interface of `requestAnimationFrame` is difficult and rigid to use. 
 `to-raf` is a **throttling adapter** to `requestAnimationFrame`. If a number of exepressions of `toRaf(f)` are executed in an interval of a frame, `requestAnimationFrame` throttles them using the last one. If no expression in an interval of a frame is executed, it does nothing.
 
-## Creation
+### Creation
 `getToRAF` creates one animation closure.
 If you want two independent animations, create two.
 ```js
-const toRAF1 = getToRAF();
-const toRAF2 = getToRAF();
+import getToRAF from 'to-raf';
+
+const toRAF = getToRAF();
+const toRAFa = getToRAF();
 ```
 
-## Usage
+### Usage
 ```js
-toRAF(anyFunction);
+toRAF(otherFunctionForEachTime); // `otherFunctionForEachTime` does not need to be a single ref.
 ```
 
-## Example for `react.js`
+### Example for `react.js`
 ```jsx
+import getToRAF from 'to-raf';
+// ...
+
+const toRAF = getToRAF();
+
 export default function MouseCage() {
     // ...
     const handleMouseMove = e => {
         toRAF(() => setX(e.clientX))
     }
     return (
-        <div onMouseMove={handleMouseMove}>MouseCage</div>
+        <div onMouseMove={handleMouseMove}>MouseCage {x}</div>
     )
 }
 ```
 
-## Test
+### Test
 This code shows how it works.
 ```js
 let x = 0;
