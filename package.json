@@ -1,0 +1,30 @@
+{
+  "name": "to-raf",
+  "version": "1.0.0",
+  "description": "a throttling adapter to requestAnimationFrame",
+  "main": "index.js",
+  "scripts": {
+    "babel": "npx babel ./src -d ./"
+  },
+  "keywords": [
+    "requestAnimationFrame",
+    "throttle",
+    "motion",
+    "animation",
+    "onMouseMove",
+    "adapter"
+  ],
+  "repository": "wooheemusic/to-raf",
+  "bugs": {
+    "url": "https://github.com/wooheemusic/to-raf/issues"
+  },
+  "homepage": "https://github.com/wooheemusic/to-raf#readme",
+  "author": "wooheemusic@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "babel-preset-minify": "^0.5.1"
+  }
+}
