@@ -28,10 +28,10 @@ export default function MouseCage() {
     // ...
     const handleMouseMove = e => {
         toRAF(() => setX(e.clientX))
-    }
+    };
     return (
         <div onMouseMove={handleMouseMove}>MouseCage {x}</div>
-    )
+    );
 }
 ```
 
@@ -39,12 +39,12 @@ export default function MouseCage() {
 This code shows how it works.
 ```js
 let x = 0;
-const createNewFunctionEachTime = () => () => console.log(x++)
-const id = setInterval((i) => {
+const createNewFunctionEachTime = () => timestamp => console.log(x++, timestamp);
+const id = setInterval(() => {
     toRAF(createNewFunctionEachTime()); // function could be mutable :) wow
 }, 1); // it prints 0 ~ 61 for 1 sec on my machine
 setTimeout(() => {
     clearTimeout(id);
-}, 1000)
+}, 1000);
 ```
 

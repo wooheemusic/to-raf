@@ -7,20 +7,20 @@ module.exports = function getToRAF() {
     function start() {
         if (!isRunning) {
             isRunning = true;
-            loop();
+            rid = requestAnimationFrame(loop);
         }
     }
     function stop() {
         isRunning = false;
         cancelAnimationFrame(rid);
     }
-    function loop() {
+    function loop(timestamp) {
         if (!isRefreshed) {
             stop();
             return;
         }
         rid = requestAnimationFrame(loop);
-        ifn();
+        ifn(timestamp);
         isRefreshed = false;
     }
 
@@ -28,5 +28,5 @@ module.exports = function getToRAF() {
         ifn = fn;
         isRefreshed = true;
         start(); // idempotent
-    }
-}
+    };
+};
